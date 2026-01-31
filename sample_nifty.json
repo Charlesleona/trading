@@ -1,0 +1,27 @@
+{
+  "records": {
+    "underlyingValue": 18050,
+    "data": [
+      {
+        "strikePrice": 18000,
+        "CE": { "openInterest": 5000, "changeinOpenInterest": 200 },
+        "PE": { "openInterest": 4500, "changeinOpenInterest": 150 }
+      },
+      {
+        "strikePrice": 18050,
+        "CE": { "openInterest": 6000, "changeinOpenInterest": 250 },
+        "PE": { "openInterest": 4000, "changeinOpenInterest": 100 }
+      },
+      {
+        "strikePrice": 18100,
+        "CE": { "openInterest": 5500, "changeinOpenInterest": 300 },
+        "PE": { "openInterest": 4200, "changeinOpenInterest": 200 }
+      },
+      {
+        "strikePrice": 18150,
+        "CE": { "openInterest": 5800, "changeinOpenInterest": 100 },
+        "PE": { "openInterest": 4100, "changeinOpenInterest": 50 }
+      }
+    ]
+  }
+}

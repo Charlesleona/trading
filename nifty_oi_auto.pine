@@ -1,0 +1,45 @@
+//@version=6
+indicator("NIFTY OI Signal Tracker (AUTO)", overlay=true)
+
+// ===== AUTO GENERATED FROM NODE.JS =====
+atm        = input.int(18050, "ATM Strike")
+support    = input.int(18000, "Support")
+resistance = input.int(18100, "Resistance")
+callLevel  = input.float(18120.00, "CALL Buy Level")
+putLevel   = input.float(17980.00, "PUT Buy Level")
+
+spot = hl2
+
+// ===== BIAS LOGIC =====
+bias =
+     spot > resistance ? "BULLISH" :
+     spot < support    ? "BEARISH" :
+                          "RANGE / NO TRADE"
+
+// ===== LEVEL PLOTS =====
+plot(support, title="Support", color=color.green, linewidth=2)
+plot(resistance, title="Resistance", color=color.red, linewidth=2)
+plot(callLevel, title="CALL Level", color=color.blue, linewidth=2)
+plot(putLevel, title="PUT Level", color=color.orange, linewidth=2)
+
+// ===== BACKGROUND TREND =====
+bgcolor(
+     bias == "BULLISH" ? color.new(color.green, 85) :
+     bias == "BEARISH" ? color.new(color.red, 85) :
+                         na
+)
+
+// ===== SINGLE LIVE LABEL =====
+var label biasLabel = na
+
+if barstate.islast
+    label.delete(biasLabel)
+
+    biasLabel := label.new(
+        bar_index,
+        spot,
+        bias,
+        style = label.style_label_down,
+        color = color.yellow,
+        textcolor = color.black
+    )
